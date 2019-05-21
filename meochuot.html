@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>meochuot</title>
+</head>
+<body>
+<script>
+    let Rat = function (name,weight,speed,sound) {
+        this.name = name;
+        this.weight = weight;
+        this.speed = speed;
+        this.sound = sound;
+        this.status = true;
+        this.said = function () {
+            console.log(this.sound);
+        };
+        this.isLife = function () {
+            return this.status;
+        }
+    };
+    let Cat = function (name,weight,maxspeed,sound) {
+        this.name = name;
+        this.weight = weight;
+        this.maxspeed = maxspeed;
+        this.sound = sound;
+        this.said = function () {
+            console.log(this.sound);
+        };
+        this.isRatLife = function (rat) {
+            return rat.isLife();
+        };
+        this.catchRat = function (speed) {
+            return this.maxspeed > speed;
+        };
+        this.eatRat = function (rat) {
+            if(this.isRatLife && this.catchRat){
+                this.weight += rat.weight;
+                rat.status = false;
+            }
+        };
+    };
+    let Tom = new Cat("Tom",12,6,"meo,neo");
+    let Jenny = new Rat("Jenny",2,5,"chit,chit");
+       console.log(Tom.said());
+       console.log(Jenny.said());
+       console.log(Tom.catchRat());
+
+</script>
+</body>
+</html>
